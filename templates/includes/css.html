@@ -1,0 +1,31 @@
+{% load static %}
+
+<link rel="icon" href="{{ seo_settings.favicon.url }}" type="image/gif" sizes="16x16' %}">
+<link rel="icon" href="{{ seo_settings.favicon.url }}" type="image/gif" sizes="18x18' %}">
+<link rel="icon" href="{{ seo_settings.favicon.url }}" type="image/gif" sizes="20x20' %}">
+
+<!-- Meta tags -->
+<meta name="description" content="{{ seo_settings.description }}">
+<meta name="keywords" content="{{ seo_settings.keywords }}">
+<meta name="author" content="{{ seo_settings.author }}">
+<meta name="robots" content="{{ seo_settings.robots }}">
+<link rel="canonical" href="{{ seo_settings.site }}">
+
+<meta property="og:title" content="{{ seo_settings.title }}">
+<meta property="og:description" content="{{ seo_settings.description }}">
+<meta property="og:image" content="{{ seo_settings.favicon.url }}">
+<meta property="og:url" content="{{ seo_settings.site }}">
+<meta property="og:type" content="{{ seo_settings.site }}">
+
+<!-- Css File -->
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/bootstrap-icons.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/fontawesome.all.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/normalize.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">

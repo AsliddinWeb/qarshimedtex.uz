@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ course_item.title }}{% endblock title %}
+
+{% block content %}
+	<!-- Start Bredcrumb Area -->
+	<section class="breadcumb-area pt-110 pb-110" style="background-image: url('/static/assets/img/breadcrumb.png')">
+		<div class="container">
+			<h2>{{ course_item.title }}</h2>
+			<ul>
+				<li><a href="index.html">{{ more_titles.home }}</a></li>
+				<li>{{ course_item.title }}</li>
+			</ul>
+		</div>
+	</section>
+	<!-- End Bredcrumb Area -->
+
+	<!-- Start Best Services Section -->
+	<section class="best-services-section ab-page pb-100 pt-100">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2">
+					<div class="section-title mb-40 text-center">
+						<h3>{{ course_item.cap_title }}</h3>
+						<h2>{{ course_item.title }}</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+
+                <div class="col-12">
+                    {{ course_item.body|safe }}
+                </div>
+			</div>
+		</div>
+	</section>
+
+{% endblock content %}

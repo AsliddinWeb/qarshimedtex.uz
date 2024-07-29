@@ -1,0 +1,11 @@
+django
+python-decouple
+requests
+django-modeltranslation
+django-rosetta
+Pillow
+urllib3==1.26.15
+django-ckeditor
+whitenoise
+mysqlclient
+django-unfold

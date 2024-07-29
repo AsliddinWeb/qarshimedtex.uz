@@ -1,0 +1,391 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ seo_settings.title }}{% endblock title %}
+
+
+{% block content %}
+
+    <!-- Slider -->
+    <section class="hero-slider-area mt--2">
+
+        <div class="hero-slider-full owl-carousel">
+            {% for i in sliders %}
+                <!-- Single -->
+                <div class="hero-slider-item" style="background-image: url({% static 'assets/img/slider/sliderbg1.png' %});">
+                <!-- Shap Image -->
+                <div class="shap-img">
+                    <img class="shap1 heartbeat" src="{% static 'assets/img/shap/shap5.png' %}" alt="shap">
+                    <img class="shap3 rotateme" src="{% static 'assets/img/shap/light.png' %}" alt="shap">
+                    <img class="shap4 heartbeat" src="{% static 'assets/img/shap/shap2.png' %}" alt="shap">
+                    <img class="shap6 heartbeat" src="{% static 'assets/img/shap/shap1.png' %}" alt="shap">
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 align-self-center">
+                            <div class="hero-caption">
+                                <h5>{{ i.cap_title }}</h5>
+                                <h2>{{ i.title }}</h2>
+                                <p>{{ i.button_text }}</p>
+                                <a class="button-1" href="{{ i.button_link }}" {% if i.target %} target="_blank" {% endif %}>{{ i.button_text }} <i
+                                        class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 align-self-end">
+                            <div class="hero-image">
+                                <img src="{{ i.image.url }}" alt="{{ i.image_alt }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+    <!-- Slider -->
+
+    <!-- About -->
+    <section class="about-area pt-110 pb-110">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6">
+                    <!-- About Images -->
+                    <div class="helpline-image">
+                        <img class="homeabout-main" src="{{ home_about.image.url }}}" alt="{{ home_about.alt }}">
+                        <div class="homeabout-shape1">
+                            <h2>{{ home_about.count }}</h2>
+                            <p>{{ home_about.count_title }}</p>
+                        </div>
+                        <div class="homeabout-shape2">
+                            <img class="heartbeat" src="{% static 'assets/img/shap/shap5.png' %}" alt="{{ home_about.alt }}">
+                        </div>
+                        <div class="homeabout-shape3">
+                            <img src="{% static 'assets/img/shap/shap3.png' %}" alt="{{ home_about.alt }}">
+                        </div>
+                        <div class="homeabout-shape4">
+                            <img src="{% static 'assets/img/shap/helpline-shape2.png' %}" alt="{{ home_about.alt }}">
+                        </div>
+                        <div class="homeabout-shape5">
+                            <img class="shap-bounce" src="{% static 'assets/img/shap/helpline-shap.png' %}" alt="{{ home_about.alt }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-6">
+                    <!-- About Content -->
+                    <div class="about-content">
+                        <!-- Section Title -->
+                        <div class="section-title">
+                            <h3>{{ home_about.cap_title }}</h3>
+                            <h2>{{ home_about.title }}</h2>
+                            <p class="pb-0">{{ home_about.body }}</p>
+                        </div>
+                        <!-- Helpline Content -->
+                        <div class="helpline-content">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="about-box">
+                                        <div class="number-icon">
+                                            <img src="{% static 'assets/img/icon/about-icon2.png' %}" alt="about">
+                                        </div>
+                                        <div class="number-text">
+                                            <h3>{{ home_about.title_1 }}</h3>
+                                            <span>{{ home_about.body_1 }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="about-box">
+                                        <div class="number-icon">
+                                            <img src="{% static 'assets/img/icon/about-icon1.png' %}" alt="about">
+                                        </div>
+                                        <div class="number-text">
+                                            <h3>{{ home_about.title_2 }}</h3>
+                                            <span>{{ home_about.body_2 }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>{{ home_about.two_body }}</p>
+                            <div class="about-quote">
+                                <p>{{ home_about.quote }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About -->
+
+    <!-- News -->
+    <section class="blog-page-area pt-120 pb-100 section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title mb-50">
+                        <h3>{{ titles.news_cap }}</h3>
+                        <h2>{{ titles.news_title }}</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Info Box Slider -->
+            <div class="infobox-slider owl-carousel owl-theme">
+                {% for item in news %}
+                    <!-- Info Box -->
+                    <div class="mb-30">
+                    <div class="blog-single-item">
+                        <div class="thumbnail">
+                            <a href="{{ item.get_absolute_url }}">
+                                <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                            </a>
+                        </div>
+                        <div class="content">
+                            <div class="auth">
+                                <span>{{ item.created_at }}</span>
+                                <span><a href="{% url 'category_news' category_pk=item.category.id %}">{{ item.category.title }}</a></span>
+                            </div>
+                            <h3><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                            <a class="button-1" href="{{ item.get_absolute_url }}">{{ news_detail_text.title }}
+                                <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- News -->
+
+    <!-- Courses -->
+    <section class="info-area pt-80 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title mb-50">
+                        <h3>{{ titles.courses_cap }}</h3>
+                        <h2>{{ titles.courses_title }}</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Info Box Slider -->
+            <div class="infobox-slider owl-carousel owl-theme">
+                {% for i in home_courses %}
+                    <!-- Info Box -->
+                    <div class="info-box info-box6">
+                    <div class="info-image">
+                        <img class="default-img" src="{{ i.image.url }}" alt="{{ i.title }}">
+                        <img class="hover-img" src="{{ i.hover_image.url }}" alt="{{ i.title }}">
+                    </div>
+                    <h3><a href="{% url 'course_detail' pk=i.id %}">{{ i.title }}</a></h3>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Courses -->
+
+    <!-- News -->
+    <section class="blog-page-area pt-120 pb-100 section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title mb-50">
+                        <h3>{{ titles.news2_cap }}</h3>
+                        <h2>{{ titles.news2_title }}</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Info Box Slider -->
+            <div class="infobox-slider owl-carousel owl-theme">
+                {% for item in news2 %}
+                    <!-- Info Box -->
+                    <div class="mb-30">
+                    <div class="blog-single-item">
+                        <div class="thumbnail">
+                            <a href="{{ item.get_absolute_url }}">
+                                <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                            </a>
+                        </div>
+                        <div class="content">
+                            <div class="auth">
+                                <span><a href="{% url 'category_news' category_pk=item.category.id %}">{{ item.category.title }}</a></span>
+                                <span>{{ item.created_at }}</span>
+                            </div>
+                            <h3><a href="{{ item.get_absolute_url }}">
+                                {{ item.title }}</a></h3>
+                            <a class="blog-btn" href="{{ item.get_absolute_url }}">{{ news_detail_text.title }} <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- News -->
+
+    <!-- Liders -->
+    <section class="team-section-area pt-110 pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title mb-50">
+                        <h3>{{ titles.liders_cap }}</h3>
+                        <h2>{{ titles.liders_title }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for lider in liders %}
+                    <!-- Single -->
+                    <div class="col-lg-4 col-sm-6 mb-30">
+                    <div class="team-card-item">
+                        <div class="thumb">
+                            <img src="{{ lider.image.url }}" alt="{{ lider.title }}">
+                        </div>
+                        <div class="content">
+                            <h4><a>{{ lider.title }}</a></h4>
+                            <p>{{ lider.position }}</p>
+                            <div class="social">
+                                <span><a href="{{ lider.facebook_url }}"><i class="fa-brands fa-facebook-f"></i></a></span>
+                                <span><a href="{{ lider.telegram_url }}"><i class="fa-brands fa-telegram"></i></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+    <!-- Liders -->
+
+    <!-- FAQ -->
+    <section class="faq-area pt-110 pb-110 section-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h3>{{ faq_title.cap_title }}</h3>
+                        <h2 class="pb-0 text-capitalize">{{ faq_title.title }}</h2>
+                    </div>
+                    <div class="faq-image pt-40">
+                        <img src="{{ faq_title.image.url }}" alt="{{ faq_title.title }}">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="accordion faq-custom" id="faqAccordion">
+                        {% for faq in faqs %}
+                            <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse{{faq.id}}" aria-expanded="true" aria-controls="collapse{{faq.id}}">
+                                    {{ faq.title }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{faq.id}}" class="accordion-collapse collapse" aria-labelledby="heading{{faq.id}}"
+                                 data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    {{ faq.body }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ-->
+
+    <!-- Partners -->
+    <div class="client-logo-section pb-110 pt-110">
+        <div class="container">
+            <!-- Section Headding -->
+            <div class="row">
+                <div class="col-lg-12 text-center mb-50">
+                    <div class="section-title">
+                        <h3>{{ titles.faq_cap }}</h3>
+                        <h2 class="mb-0">{{ titles.faq_title }}</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Section Headding -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="client-logo-slider owl-carousel">
+                        {% for partner in partners %}
+                            <div class="single-logo-item">
+                                <a href="{{ partner.link }}" target="_blank">
+                                    <img src="{{ partner.image.url }}" alt="{{ partner.title }}">
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partners -->
+
+    <!-- Location -->
+    <div class="contact-area-section">
+        <!-- Contact Form -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-7">
+                    <div class="map-contact-form">
+                        <div class="contact-form">
+                            <div class="section-title mb-30">
+                                <h3>{{ contact_us.cap_title }}</h3>
+                                <h2>{{ contact_us.title|safe }}</h2>
+                            </div>
+                            <div class="get-appointment-form">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="single-field">
+                                                <label for="name">{{ contact_us.name }}</label>
+                                                <input type="text" placeholder="{{ contact_us.name }}" name="name" id="name" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="single-field">
+                                                <label for="phone">{{ contact_us.phone }}</label>
+                                                <input type="text" placeholder="+998 (90) 123 45 67" name="phone" id="phone" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="single-field">
+                                                <textarea name="message" placeholder="{{ contact_us.message }}" id="message" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 mb-30">
+                                            <p>{{ contact_us.body|safe }}</p>
+                                        </div>
+                                        <div class="col-md-5 col-sm-8">
+                                            <div class="single-field pt-20 pb-0">
+                                                <button type="submit" class="button-1">{{ contact_us.submit }} <i class="fa-solid fa-arrow-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact_map wow fadeInUp" data-wow-delay=".3s">
+            <{{ contact_us.iframe|safe }}
+        </div>
+
+    </div>
+    <!-- Location -->
+{% endblock content %}
+

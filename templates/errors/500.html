@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ error_texts.error_500_title }}{% endblock title %}
+
+{% block content %}
+	<!-- Start Bredcrumb Area -->
+	<section class="breadcumb-area pt-110 pb-110" style="background-image: url('/static/assets/img/breadcrumb.png')">
+		<div class="container">
+			<h2>{{ error_texts.error_500_title }}</h2>
+			<ul>
+				<li><a href="/">{{ more_titles.home }}</a></li>
+				<li>{{ error_texts.error_500_title }}</li>
+			</ul>
+		</div>
+	</section>
+	<!-- End Bredcrumb Area -->
+
+	<!-- Start Blog Page -->
+	<section class="blog-page-area pt-30 pb-30">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="alert alert-warning">
+						<div class="text-center">
+							{{ error_texts.error_500_body }}
+						</div>
+						<br>
+						<div class="text-center mt-3">
+							<a href="/" class="btn btn-success"><i class="fa fa-home"></i> {{ more_titles.home }}</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Blog Page -->
+{% endblock content %}

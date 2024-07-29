@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block content %}
+    <!-- Start Bredcrumb Area -->
+	<section class="breadcumb-area pt-110 pb-110" style="background-image: url('/static/assets/img/breadcrumb.png')">
+		<div class="container">
+			<h2>{{ page.title }}</h2>
+			<ul>
+				<li><a href="/">{{ more_titles.home }}</a></li>
+				<li>{{ page.title }}</li>
+			</ul>
+		</div>
+	</section>
+	<!-- End Bredcrumb Area -->
+
+	<!-- Start Page Area -->
+	<section class="about-area about-page pt-100 pb-80">
+		<div class="container">
+			<div class="row">
+				{{ page.content|safe }}
+			</div>
+		</div>
+	</section>
+	<!-- End Page Area -->
+{% endblock content %}

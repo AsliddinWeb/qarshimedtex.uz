@@ -1,0 +1,46 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="uz">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>
+		{% block title %}{% endblock title %}
+	</title>
+
+	{% include 'includes/css.html' %}
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- Preloader -->
+
+	{% include 'components/header.html' %}
+
+	{% block content %}
+	{% endblock content %}
+
+	{% include 'components/footer.html' %}
+
+	<!-- Scroll	-->
+	<div class="scroll-area">
+		<i class="bi bi-arrow-up"></i>
+	</div>
+	<!-- Scroll	-->
+
+	{% include 'includes/js.html' %}
+
+</body>
+
+</html>

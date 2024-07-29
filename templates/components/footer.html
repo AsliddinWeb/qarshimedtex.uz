@@ -1,0 +1,82 @@
+{% load static %}
+
+<!--  Footer  -->
+<footer class="footer">
+    <!-- Footer Top -->
+    <div class="footer-top pt-100 pb-100" style="background-image: url('{% static "assets/img/footer-bg.png" %}');">
+        <div class="container">
+
+            <div class="row">
+                <!-- Single Widgets -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-widegts-single">
+                        <div class="f-logo mb-15">
+                            <a href="/">
+                                <img src="{{ footer.footer_logo }}" alt="{{ seo_settings.title }}">
+                            </a>
+                        </div>
+                        <p>{{ footer.body }}</p>
+                        <div class="footer-social">
+                            {% for i in social_networks %}
+                                <span>
+                                    <a href="{{ i.link }}" target="_blank">
+                                        <i class="{{ i.i_class }}"></i>
+                                    </a>
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% for i in footer_link_categories %}
+                    <!-- Single Widgets -->
+                    <div class="col-lg-2 col-md-3 col-6">
+                    <div class="footer-widegts-single">
+                        <h3 class="title">{{ i.title }}</h3>
+                        <ul>
+                            {% for l in footer_links %}
+                                {% if l.category.id == i.id %}
+                                    <li><a href="{{ l.link }}">{{ l.title }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                <div class="col-lg-4">
+                    <div class="footer-widegts-single">
+                        <h3 class="title">{{ contact_info.title }}</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>{{ contact_info.location }}</span>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-phone"></i>
+                                <a href="{{ contact_info.phone_link }}">{{ contact_info.phone }}</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-envelope"></i>
+                                <a href="{{ contact_info.email_link }}">{{ contact_info.email }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom pt-45 pb-45">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="copyright-text">
+                        <p>{{ footer.copyright|safe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--  Footer  -->
